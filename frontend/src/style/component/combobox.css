@@ -1,0 +1,117 @@
+.m-combobox {
+  position: relative;
+  display: flex;
+  border-radius: 10px;
+  height: 40px;
+  width: 171px;
+  cursor: pointer;
+  border: 1px solid #bbbbbb;
+  padding: 10px;
+}
+
+.m-combobox.error {
+  border-color: #ff4747 !important;
+}
+.m-combobox.m-combobox-focus {
+  border-color: #8a6bf6;
+}
+
+.m-combobox + .m-combobox {
+  margin-left: 16px;
+}
+
+.m-combobox .m-combobox-input {
+  text-align: left;
+  width: calc(100% - 30px);
+  height: 100%;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  color: #4e5b6a;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* .m-combobox:focus-within {
+  border-color: #0dd469;
+} */
+
+.m-combobox .m-combobox-bagde-container {
+  position: absolute;
+  top: 1px;
+  right: 31px;
+  bottom: 1px;
+  display: flex;
+  align-items: center;
+}
+
+.m-combobox-bagde-container .m-combobox-badge {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #03ae66;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.m-combobox .m-combobox-btn {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  bottom: 1px;
+  width: 30px;
+  padding: 0;
+  background-color: #fff;
+  border: none;
+  border-radius: 0 10px 10px 0;
+  cursor: pointer;
+}
+
+.m-combobox .m-combobox-select {
+  position: absolute;
+  display: block;
+  z-index: 10;
+  left: 0;
+  top: calc(100% + 2px);
+
+  width: 100%;
+  max-height: 162px;
+  padding: 8px;
+  border-radius: 10px;
+
+  background-color: #fff;
+  border: 1px solid #c5c5c5;
+
+  overflow: auto;
+  box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
+}
+
+.m-combobox .m-combobox-select .m-combobox-item {
+  width: 100%;
+  padding: 8px;
+  height: 30px;
+  border-radius: 10px;
+  color: #4e5b6a;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.m-combobox .m-combobox-select .m-combobox-item:hover {
+  background-color: #ededed;
+}
+
+.m-combobox .m-combobox-item.m-item-selected {
+  color: #8a6bf6;
+  background-color: #ededed;
+}
+
+.m-combobox-error {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  color: #ff4747 !important;
+}

@@ -1,0 +1,123 @@
+.card {
+  /* max-width: 308px; */
+  min-width: 280px;
+  min-height: 200px;
+  border-radius: 10px;
+
+  position: relative;
+  background-color: #ffffff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.16);
+  overflow: hidden;
+}
+
+.card .card-type {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 64px;
+  height: 36px;
+  padding: 8px;
+  border-radius: 10px 0 10px 0;
+
+  background-color: #8a6bf6;
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.card .card-image {
+  width: 100%;
+  height: 124px;
+  /* object-fit: cover; */
+  /* background-image: url('../../../assets/Icons/subjects-avatar/dialy.png'); */
+  /* background-size: cover;
+  background-repeat: no-repeat; */
+  cursor: pointer;
+}
+
+.card .card-body {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 16px;
+}
+
+.card .card-body .card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #4e5b6a;
+  cursor: pointer;
+}
+
+.card .card-body .card-question-count {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.card-question-count .card-icon-courseware {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+
+  background-image: url('../../../assets/Icons/ic_course_ware-16.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.card-question-count span {
+  color: #4e5b6a;
+  margin-right: 12px;
+}
+
+.card-question-count .card-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  padding: 4px;
+  font-size: 10px;
+  font-weight: 500;
+  color: #8a6bf6;
+  background-color: #e8e1fd;
+}
+
+.card .card-body .card-icon-ellipsis {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  position: relative;
+}
+
+.card-icon-ellipsis .card-popover {
+  position: absolute;
+  top: 0;
+  right: 100%;
+
+  border-radius: 10px;
+  padding: 4px 0;
+
+  background-color: #fff;
+  /* border: 1px solid #c5c5c5; */
+
+  overflow: auto;
+  box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
+}
+
+.card-icon-ellipsis .card-popover .card-popover-item {
+  padding: 4px;
+  min-width: 60px;
+  /* border-radius: 10px; */
+  text-align: center;
+}
+
+.card-icon-ellipsis .card-popover .card-popover-item:hover {
+  background-color: #ededed;
+  color: #8a6bf6;
+}

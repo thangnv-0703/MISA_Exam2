@@ -1,0 +1,18 @@
+.answer-fill-blank {
+  height: 100%;
+  width: 100%;
+}
+
+.answer-fill-blank .answer-row-fb {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.answer-fill-blank .answer-row-fb + .answer-row-fb {
+  margin-top: 8px;
+}
+
+.answer-row-fb .answer-input-tags {
+  width: calc(100% - 84px);
+}

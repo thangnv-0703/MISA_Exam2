@@ -1,0 +1,73 @@
+.new-ex-content {
+  max-width: 864px;
+  padding: 0 12px;
+  margin: 120px auto 0;
+  text-align: center;
+}
+
+.new-ex-content > p {
+  font-size: 18px;
+  font-weight: 700;
+  color: #4e5b6a;
+  padding: 40px 0 25px 0;
+  margin: 0;
+}
+
+.new-ex-content .import-region {
+  max-width: 840px;
+  height: 228px;
+  border-radius: 10px;
+
+  background-image: url('../../../assets/Icons/ic_dashed_line.svg');
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+.import-region .import-region-icon {
+  width: 64px;
+  height: 64px;
+  margin: 20px auto;
+  cursor: pointer;
+}
+
+.import-region p {
+  margin: 5px;
+  font-size: 16px;
+  color: rgba(78, 91, 106, 0.7);
+}
+
+.import-region button {
+  margin: 20px auto;
+}
+
+.new-ex-content .question-type-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+li.question-type-item:not(:last-child) {
+  margin-right: 84px;
+}
+
+.question-type-list .question-type-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 64px;
+}
+
+.question-type-list .question-type-item .question-type-icon {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 14px;
+  cursor: pointer;
+}
+
+.question-type-list .question-type-item span {
+  white-space: nowrap;
+  font-size: 16px;
+  color: #4e5b6a;
+}

@@ -1,0 +1,48 @@
+.checkbox-container {
+  position: relative;
+  min-width: 32px !important;
+  min-height: 32px !important;
+}
+
+.checkbox {
+  opacity: 0;
+  margin: 0;
+  width: 20px;
+}
+
+.checkbox:focus + .checkmark {
+  background-color: #00c542;
+}
+
+.checkbox:checked + .checkmark {
+  background-color: #00c542;
+}
+
+.checkbox:not(:checked) + .checkmark {
+  background-color: #ffffff;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+
+  width: 32px;
+  height: 32px;
+
+  color: #ffffff;
+  border: 1px solid #b6b9ce;
+  background-color: #ffffff;
+  border-radius: 10px;
+  cursor: pointer;
+
+  background-image: url('../../assets/Icons/ic_check.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.checkbox-label {
+  margin-left: 10px;
+  cursor: pointer;
+}

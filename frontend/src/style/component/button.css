@@ -1,0 +1,61 @@
+.m-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+  height: 40px;
+  font-size: 13px;
+  padding: 12px 12px;
+  text-align: center;
+  font-family: 'Google Sans';
+  font-weight: 500;
+
+  min-width: 112px;
+  cursor: pointer;
+}
+
+.m-btn:hover {
+  opacity: 0.9;
+}
+
+/* .m-btn:active {
+  background-color: #01b075;
+} */
+
+.m-btn-has-icon {
+  padding: 16px;
+}
+
+.m-btn-icon-16 {
+  width: 16px;
+  height: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-right: 8px;
+}
+
+.m-primary-btn {
+  color: #fff;
+  background-color: #8a6bf6;
+  border: 1px solid #8a6bf6;
+}
+
+.m-second-btn {
+  color: #4e5b6a;
+  background-color: #f1f2f7;
+  border: 1px solid #b6b9ce;
+}
+
+.m-second-btn:hover {
+  background-color: #eaecef;
+}
+
+.m-icon-btn {
+  min-width: 40px;
+}
+
+.m-icon-btn:hover {
+  background-color: #f8f8f8;
+}

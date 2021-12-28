@@ -1,0 +1,126 @@
+@import url('./component/icon.css');
+@import url('./component/combobox.css');
+@import url('./component/button.css');
+@import url('./component/input.css');
+@import url('./component/table.css');
+@import url('./component/checkbox.css');
+@import url('./component/popup.css');
+@import url('./component/toast.css');
+@import url('./component/tooltip.css');
+@import url('./component/inputTags.css');
+
+@font-face {
+  font-family: 'Google Sans';
+  src: url('../assets/Fonts/GoogleSans/GoogleSans-Regular.woff2');
+}
+
+@font-face {
+  font-family: 'Google Sans-Bold';
+  src: url('../assets/Fonts/GoogleSans/GoogleSans-Bold.woff2');
+}
+
+@font-face {
+  font-family: 'Google Sans-Medium';
+  src: url('../assets/Fonts/GoogleSans/GoogleSans-Medium.woff2');
+}
+
+@font-face {
+  font-family: 'Google Sans-MediumItalic';
+  src: url('../assets/Fonts/GoogleSans/GoogleSans-MediumItalic.woff2');
+}
+
+@font-face {
+  font-family: 'Google Sans-BoldItalic';
+  src: url('../assets/Fonts/GoogleSans/GoogleSans-BoldItalic.woff2');
+}
+
+@font-face {
+  font-family: 'Google Sans-Italic';
+  src: url('../assets/Fonts/GoogleSans/GoogleSans-Italic.woff2');
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  font-family: 'Google Sans';
+  font-size: 13px;
+  margin: 0;
+  color: #4e5b6a;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.m-row {
+  display: flex;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.ml-12 {
+  margin-left: 12px !important;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+button + button {
+  margin-left: 10px;
+}
+
+.m-required {
+  color: #fa3939;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+::-webkit-scrollbar {
+  width: 5px !important;
+  height: 10px !important;
+  z-index: 1231232123421;
+}
+
+::-webkit-scrollbar-track {
+  width: 6px;
+  background-color: #bbb;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #808080;
+  border-radius: 8px;
+}
+
+::-webkit-file-upload-button {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}

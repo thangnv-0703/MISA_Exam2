@@ -1,0 +1,48 @@
+.answer-right-wrong {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.answer-right-wrong .answer-box-rw {
+  position: relative;
+  width: 240px;
+  min-height: 228px;
+  border-radius: 10px;
+}
+
+.answer-right-wrong .answer-box-rw + .answer-box-rw {
+  margin-left: 16px;
+}
+
+.answer-box-rw .answer-checkbox-rw {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+.answer-box-rw .answer-input-area-rw {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  left: 0;
+  bottom: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.answer-box-rw .answer-input-area-rw .answer-input-rw {
+  font-size: 24px;
+  font-weight: 700;
+  color: #4e5b6a;
+  width: 100%;
+
+  border: none;
+  outline: none;
+  resize: none;
+  text-align: center;
+}

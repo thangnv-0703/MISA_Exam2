@@ -1,0 +1,167 @@
+.dialog-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.dialog-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000;
+  opacity: 0.4;
+}
+
+.dialog-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 800px;
+  min-height: 540px;
+  padding: 24px;
+  border-radius: 10px;
+
+  background-color: #ffffff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.16);
+  overflow: hidden;
+}
+
+.dialog-container .dialog-box .dialog-header {
+  position: relative;
+}
+
+.dialog-header p {
+  font-size: 24px;
+  font-weight: 700;
+  color: #4e5b6a;
+  margin: 0;
+}
+
+.dialog-header .dialog-close-x {
+  /* width: 13px;
+  height: 13px; */
+  width: 26px;
+  height: 26px;
+
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  transform: translate(50%, -50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  background-size: contain;
+}
+
+.dialog-container .dialog-box .dialog-content {
+  padding: 24px 0;
+  display: flex;
+}
+
+.dialog-content .dialog-left {
+  width: 261px;
+}
+
+.dialog-content .dialog-left span {
+  font-weight: 500;
+  color: #4e5b6a;
+}
+
+.dialog-content .dialog-left .dialog-image {
+  margin-top: 5px;
+  width: 100%;
+  position: relative;
+}
+
+.dialog-image .exercise-image {
+  border-radius: 10px;
+  width: 260px;
+  height: 156px;
+  overflow: hidden;
+}
+
+.dialog-image .upload-img {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.dialog-image .upload-img .input-file {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.dialog-content .dialog-right {
+  margin-left: 40px;
+}
+
+.dialog-content .dialog-right .form-label {
+  display: block;
+}
+
+.dialog-content .dialog-right .input-block {
+  width: 452px;
+}
+
+.dialog-content .dialog-right .input-half-block {
+  width: 216px;
+}
+
+.dialog-content .search-tags {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.dialog-content .search-tag {
+  color: #4e5b6a;
+  padding: 8px 12px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  border: 1px solid #b6b9ce;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.dialog-content .search-tag.chosen-tag {
+  color: #fff;
+  background-color: #8a6bf6;
+}
+
+.dialog-content .chosen-tags {
+  width: 452px;
+  min-height: 80px;
+  margin-top: 8px;
+  padding: 8px;
+
+  border-radius: 10px;
+  border: 1px solid #b6b9ce;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.dialog-box .dialog-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}

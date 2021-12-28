@@ -1,0 +1,60 @@
+.m-inputs-container {
+  background-color: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #b6b9ce;
+  max-width: 928px;
+  min-height: 44px;
+  padding: 6px;
+  padding-right: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+
+  position: relative;
+}
+
+.m-inputs-container .m-inputs {
+  border: none;
+  outline: none;
+  height: 32.8px;
+  min-width: 100px;
+  color: #4e5b6a;
+}
+
+.m-inputs-container .m-tag {
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  padding: 8px 7px;
+  margin-right: 4px;
+  border-radius: 8px;
+  color: #4e5b6a;
+  background-color: #dfdfdf;
+  /* color: #000; */
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.m-tag .m-tag-x {
+  width: 12px;
+  height: 12px;
+  background-image: url('../../assets/Icons/ic_x-12.svg');
+  background-size: contain;
+  cursor: pointer;
+}
+
+.m-inputs-container .m-inputs-x {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 12px;
+
+  width: 16px;
+  height: 16px;
+  background-image: url('../../assets/Icons/ic_x-12.svg');
+  background-size: contain;
+  cursor: pointer;
+}
