@@ -5,13 +5,22 @@ const moduleGrade = {
   state: () => ({
     grades: [],
   }),
+  getters: {
+    /**
+     * Lấy danh sách khối lớp
+     * Author: NVTHANG (31/12/2021)
+     * @param {*} state
+     * @returns
+     */
+    getGradeList: (state) => state.grades,
+  },
   actions: {
     /**
      * Gọi api dữ liệu khối lớp
      * @param {*} context
      */
-    getGrades(context) {
-      axios.get(Resource.api.grade).then((response) => {
+    async getGrades(context) {
+      await axios.get(Resource.api.grade).then((response) => {
         context.commit('SET_GRADES', response.data);
       });
     },

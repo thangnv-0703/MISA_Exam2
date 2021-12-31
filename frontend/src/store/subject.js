@@ -7,20 +7,28 @@ const moduleSubject = {
     searchTags: [],
   }),
   getters: {
-    getSubjects(state) {
-      return state.subjects;
-    },
-    getSearchTags(state) {
-      return state.searchTags;
-    },
+    /**
+     * Lấy danh sách môn học
+     * Author: NVTHANG (31/12/2021)
+     * @param {*} state
+     * @returns
+     */
+    getSubjectList: (state) => state.subjects,
+    /**
+     * Lấy danh sách thẻ tìm kiếm
+     * Author: NVTHANG (31/12/2021)
+     * @param {*} state
+     * @returns
+     */
+    getSearchTags: (state) => state.searchTags,
   },
   actions: {
     /**
      * Gọi api dữ liệu khối lớp
      * @param {*} context
      */
-    getSubjects(context) {
-      axios.get(Resource.api.subject).then((response) => {
+    async getSubjects(context) {
+      await axios.get(Resource.api.subject).then((response) => {
         context.commit('SET_SUBJECTS', response.data);
       });
       context.commit('SET_SEARCH_TAGS', -1);

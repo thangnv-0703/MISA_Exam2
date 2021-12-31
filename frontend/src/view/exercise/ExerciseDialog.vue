@@ -14,7 +14,14 @@
         <div class="dialog-left">
           <span>{{ resource.label.avatar }}</span>
           <div class="dialog-image">
-            <img class="exercise-image" :src="exerciseData.ExerciseImage" />
+            <img class="exercise-image" v-if="exerciseData.ExerciseImage" />
+            <div
+              class="exercise-subject-img"
+              v-else
+              :style="`background-image: url('../../../assets/Icons/subjects-avatar/${
+                exercise.SubjectCode ? exercise.SubjectCode : 'default'
+              }.png');`"
+            ></div>
             <div class="upload-img icon-upload">
               <input type="file" class="input-file" @change="uploadImage" />
             </div>
@@ -145,17 +152,15 @@ export default {
         TopicId: null,
         SearchTags: [],
       },
+      subjects: [],
+      grades: [],
+      defaultTags: [],
     };
   },
   computed: mapState({
     resource: (state) => state.resource.resourceData,
-    subjects: (state) => state.subject.subjects,
-    grades: (state) => state.grade.grades,
     topics: (state) => state.topic.topics,
     exercise: (state) => state.exercise.exerciseData,
-    defaultTags: function () {
-      return this.$store.getters.getSearchTags;
-    },
   }),
   watch: {
     'exerciseData.GradeId': function () {
@@ -182,16 +187,19 @@ export default {
         });
       this.$store.commit('SET_EXERCISE_SUBJECT', data[0]);
       this.$store.commit('SET_SEARCH_TAGS', this.exerciseData.SubjectId);
+      // this.defaultTags = this.defaultTags.filter(element => element.);
+      // console.log(this.$store.getters.getSearchTags);
       this.$store.commit('UPDATE_TOPICS', this.exerciseData.SubjectId);
-      if (!this.isChooseFile) {
-        this.handleFile(data[0].SubjectCode);
-      }
+
       this.exerciseData.SearchTags = this.exerciseData.SearchTags.filter(
         (tag) => this.defaultTags.includes(tag),
       );
     },
     'exerciseData.ExerciseImage': function () {
       console.log(this.exerciseData.ExerciseImage);
+    },
+    'exerciseData.ExerciseName': function () {
+      this.$store.commit('SET_EXERCISE_NAME', this.exerciseData.ExerciseName);
     },
     topics: function () {
       let exitTopicId = 0;
@@ -205,23 +213,51 @@ export default {
         this.exerciseData.TopicId = null;
       }
     },
-    'exerciseData.ExerciseName': function () {
-      this.$store.commit('SET_EXERCISE_NAME', this.exerciseData.ExerciseName);
-    },
   },
-  created() {
-    this.$store.dispatch('getSubjects');
-    this.$store.dispatch('getGrades');
+  async created() {
+    // Lấy danh sách khối lớp
+    let gradeList = [];
+    if (sessionStorage.getItem('grades')) {
+      gradeList = JSON.parse(sessionStorage.getItem('grades'));
+    } else {
+      await this.$store.dispatch('getGrades');
+      gradeList = this.$store.getters.getGradeList;
+      sessionStorage.setItem('grades', JSON.stringify(gradeList));
+    }
+    this.grades = gradeList;
+
+    // Lấy dánh sách môn học
+    let subjectList = [];
+    if (sessionStorage.getItem('subjects')) {
+      subjectList = JSON.parse(sessionStorage.getItem('subjects'));
+    } else {
+      await this.$store.dispatch('getSubjects');
+      subjectList = this.$store.getters.getSubjectList;
+      sessionStorage.setItem('subjects', JSON.stringify(subjectList));
+    }
+    this.subjects = subjectList;
+
+    this.$store.dispatch('getTopics');
+
+    let searchTagList = [];
+    if (sessionStorage.getItem('searchTags')) {
+      searchTagList = JSON.parse(sessionStorage.getItem('searchTags'));
+    } else {
+      await this.$store.dispatch('getSubjects');
+      searchTagList = this.$store.getters.getSearchTags;
+      sessionStorage.setItem('searchTags', JSON.stringify(searchTagList));
+    }
+    this.defaultTags = searchTagList;
+
     if (this.mode === Enum.ExerciseFormMode.Edit) {
       this.formMode = Enum.ExerciseFormMode.Edit;
       this.exerciseData = this.exercise;
-      console.log(this.exerciseData.ExerciseImage);
     }
-    if (!this.exerciseData.ExerciseImage) {
-      this.handleFile(null);
-    } else {
-      this.isChooseFile = true;
-    }
+    // if (!this.exerciseData.ExerciseImage) {
+    //   this.handleFile(null);
+    // } else {
+    //   this.isChooseFile = true;
+    // }
   },
   methods: {
     /**
@@ -240,20 +276,6 @@ export default {
       reader.readAsDataURL(file);
       this.isChooseFile = true;
       // this.exerciseData.ExerciseImage = file;
-    },
-    /**
-     * Hàm xử lý việc thay đổi ảnh theo môn học
-     * Author: NVThang (11/12/2021)
-     */
-    handleFile(subjectCode) {
-      console.log('edit theo môn');
-      if (!subjectCode) {
-        this.exerciseData.ExerciseImage = this.resource.imageSubject[0].image;
-      } else {
-        this.exerciseData.ExerciseImage = this.resource.imageSubject.filter(
-          (imageSubject) => imageSubject.subjectCode === subjectCode,
-        )[0].image;
-      }
     },
     /*
     Hàm validate dữ liệu khi bấm nút lưu
@@ -291,7 +313,6 @@ export default {
           'SET_EXERCISE_IMAGE',
           this.exerciseData.ExerciseImage,
         );
-        console.log(this.exerciseData.ExerciseImage);
         if (this.formMode === Enum.ExerciseFormMode.Add) {
           this.$router.push('/new-exercise');
         } else {

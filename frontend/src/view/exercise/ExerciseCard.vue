@@ -1,7 +1,16 @@
 <template>
   <div class="card" :class="classList">
     <div class="card-type">{{ cardTitle }}</div>
-    <img class="card-image" :src="exercise.ExerciseImage" />
+    <img
+      class="card-image"
+      :src="exercise.ExerciseImage"
+      v-if="exercise.ExerciseImage"
+    />
+    <div
+      class="card-subject-image"
+      v-else
+      :style="`background-image: url('../../../assets/Icons/subjects-avatar/${exercise.SubjectCode}.png');`"
+    ></div>
     <div class="card-body">
       <div class="card-info">
         <span class="card-title">{{ exercise.ExerciseName }}</span>

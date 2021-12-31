@@ -28,14 +28,8 @@
         <BaseButton class="m-second-btn ml-12" @click="isShowDialog = true">
           {{ resource.btns.addInfor }}
         </BaseButton>
-        <BaseButton class="m-second-btn ml-12">
-          {{ resource.btns.changeComposingType }}
-        </BaseButton>
       </div>
       <div class="m-header-toolbar-right">
-        <BaseButton class="m-second-btn">
-          {{ resource.btns.tryTodo }}
-        </BaseButton>
         <BaseButton class="m-primary-btn" @click="handleChangeStatusExercise">
           {{ resource.btns.finish }}
         </BaseButton>
@@ -64,12 +58,12 @@ export default {
       gradeId: null,
       subjectId: null,
       exerciseName: '',
+      subjects: [],
+      grades: [],
     };
   },
   computed: mapState({
     resource: (state) => state.resource.resourceData,
-    subjects: (state) => state.subject.subjects,
-    grades: (state) => state.grade.grades,
     exercise: (state) => state.exercise.exerciseData,
   }),
   watch: {
@@ -107,7 +101,27 @@ export default {
       this.$store.commit('SET_EXERCISE_NAME', this.exerciseName);
     },
   },
-  created() {
+  async created() {
+    let gradeList = [];
+    if (sessionStorage.getItem('grades')) {
+      gradeList = JSON.parse(sessionStorage.getItem('grades'));
+    } else {
+      await this.$store.dispatch('getGrades');
+      gradeList = this.$store.getters.getGradeList;
+      sessionStorage.setItem('grades', JSON.stringify(gradeList));
+    }
+    this.grades = gradeList;
+
+    // Lấy dánh sách môn học
+    let subjectList = [];
+    if (sessionStorage.getItem('subjects')) {
+      subjectList = JSON.parse(sessionStorage.getItem('subjects'));
+    } else {
+      await this.$store.dispatch('getSubjects');
+      subjectList = this.$store.getters.getSubjectList;
+      sessionStorage.setItem('subjects', JSON.stringify(subjectList));
+    }
+    this.subjects = subjectList;
     this.$store.dispatch('getSubjects');
     this.$store.dispatch('getGrades');
     this.updateExerciseValue();
@@ -131,7 +145,6 @@ export default {
             me.exercise,
           )
           .then(() => {
-            console.log(me.exercise);
             me.$router.push('/');
             me.$store.commit('RESET_EXERCISE');
             // me.$store.commit('RESET_EXERCISE_LIST');

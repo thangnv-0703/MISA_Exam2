@@ -45,9 +45,6 @@
           </div>
         </div>
         <div class="content-btn-group">
-          <BaseButton classList="m-second-btn">
-            {{ resource.btns.share }}
-          </BaseButton>
           <BaseButton
             classList="m-primary-btn btn-compose"
             @click="isShowDialog = true"
@@ -133,6 +130,9 @@ export default {
       exerciseStatusId: -1,
       searchText: '',
 
+      subjects: [],
+      grades: [],
+      topics: [],
       pageSize: 40,
       pageIndex: 1,
       totalRecord: 0,
@@ -142,15 +142,6 @@ export default {
     resource: (state) => state.resource.resourceData,
     exercises() {
       return this.$store.getters.exerciseList;
-    },
-    subjects() {
-      return Resource.subjects.concat(this.$store.state.subject.subjects);
-    },
-    grades() {
-      return Resource.grades.concat(this.$store.state.grade.grades);
-    },
-    topics() {
-      return Resource.topics.concat(this.$store.state.topic.topics);
     },
     exerciseStatus() {
       return this.resource.exerciseStatus;
@@ -169,11 +160,46 @@ export default {
       this.filterData();
     },
   },
-  created() {
-    this.$store.dispatch('getSubjects');
-    this.$store.dispatch('getGrades');
-    // this.$store.dispatch('getExercises');
-    this.$store.dispatch('getTopics');
+  async created() {
+    // Lấy danh sách khối lớp
+    let gradeList = [];
+    if (sessionStorage.getItem('grades')) {
+      gradeList = JSON.parse(sessionStorage.getItem('grades'));
+    } else {
+      await this.$store.dispatch('getGrades');
+      gradeList = this.$store.getters.getGradeList;
+      sessionStorage.setItem('grades', JSON.stringify(gradeList));
+    }
+    this.grades = this.resource.grades.concat(gradeList);
+
+    // Lấy dánh sách môn học
+    let subjectList = [];
+    if (sessionStorage.getItem('subjects')) {
+      subjectList = JSON.parse(sessionStorage.getItem('subjects'));
+    } else {
+      await this.$store.dispatch('getSubjects');
+      subjectList = this.$store.getters.getSubjectList;
+      sessionStorage.setItem('subjects', JSON.stringify(subjectList));
+    }
+    this.subjects = this.resource.subjects.concat(subjectList);
+
+    // Lấy dánh sách chủ đề
+    let topicList = [];
+    if (sessionStorage.getItem('topics')) {
+      topicList = JSON.parse(sessionStorage.getItem('topics'));
+    } else {
+      await this.$store.dispatch('getTopics');
+      topicList = this.$store.getters.getTopicList;
+      sessionStorage.setItem('topics', JSON.stringify(topicList));
+    }
+    this.topics = this.resource.topics.concat(topicList);
+
+    if (!sessionStorage.getItem('searchTags')) {
+      sessionStorage.setItem(
+        'searchTags',
+        JSON.stringify(this.$store.getters.getSearchTags),
+      );
+    }
     this.filterData();
   },
   methods: {

@@ -68,6 +68,7 @@ namespace MISA.Fresher.Exam.Infrastructure.Repository
             var project = Builders<Exercise>.Projection.Include(x => x.ExerciseId)
                                                         .Include(x => x.ExerciseName)
                                                         .Include(x => x.SubjectName)
+                                                        .Include(x => x.SubjectCode)
                                                         .Include(x => x.GradeName)
                                                         .Include(x => x.Status)
                                                         .Include(x => x.ExerciseImage)

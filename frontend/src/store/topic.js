@@ -6,13 +6,16 @@ const moduleTopic = {
     topics: [],
     initialTopic: [],
   }),
+  getters: {
+    getTopicList: (state) => state.topics,
+  },
   actions: {
     /**
      * Gọi api dữ liệu khối lớp
      * @param {*} context
      */
-    getTopics(context) {
-      axios.get(Resource.api.topic).then((response) => {
+    async getTopics(context) {
+      await axios.get(Resource.api.topic).then((response) => {
         context.commit('SET_TOPICS', response.data);
       });
     },

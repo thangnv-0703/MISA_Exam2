@@ -82,6 +82,16 @@
   position: relative;
 }
 
+.dialog-image .exercise-subject-img {
+  border-radius: 10px;
+  width: 260px;
+  height: 156px;
+  overflow: hidden;
+
+  background-size: cover;
+  background-position: center center;
+}
+
 .dialog-image .exercise-image {
   border-radius: 10px;
   width: 260px;

@@ -2,24 +2,6 @@
   <div class="exercise-detail">
     <Header />
     <div class="exercise-detail-list">
-      <div class="btn-group">
-        <div class="btn-group-left">
-          <BaseButton classList="btn-left">
-            {{ resource.btns.chooseFromCourseware }}
-          </BaseButton>
-          <BaseButton classList="btn-left">
-            {{ resource.btns.sortQuestion }}
-          </BaseButton>
-        </div>
-        <div class="btn-group-right">
-          <BaseButton classList="btn-right">
-            {{ resource.btns.import }}
-          </BaseButton>
-          <BaseButton classList="btn-right">
-            {{ resource.btns.separateByAI }}
-          </BaseButton>
-        </div>
-      </div>
       <div class="exercise-list">
         <QuestionCard
           v-for="(question, index) in questions"
@@ -52,10 +34,9 @@ import { mapState } from 'vuex';
 import Resource from '../../script/resource';
 import Enum from '../../script/enum';
 import Header from '../../components/layout/TheHeader.vue';
-import BaseButton from '../../components/base/BaseButton.vue';
 import QuestionCard from '../question/QuestionCard.vue';
 export default {
-  components: { Header, BaseButton, QuestionCard },
+  components: { Header, QuestionCard },
   data() {
     return {
       questionType: Resource.questionType,
